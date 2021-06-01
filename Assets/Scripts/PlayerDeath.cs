@@ -6,6 +6,7 @@ public class PlayerDeath : Damage
 {
     public override void Die(bool destroyGameObject = false)
     {
+        Debug.Log($"Called fom here {destroyGameObject}");
         base.Die(destroyGameObject);
         Debug.Log("Player Died");
     }

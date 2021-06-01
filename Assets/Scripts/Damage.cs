@@ -26,7 +26,7 @@ public class Damage : MonoBehaviour
 
     public virtual void Die(bool destroyGameObject = true)
     {
-        Debug.Log("Died");
+        Debug.Log($"Died {destroyGameObject}");
         if(destroyGameObject)
             Destroy(gameObject);
     }

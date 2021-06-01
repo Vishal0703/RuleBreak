@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float waitTime = 2f;
+    [SerializeField] float timeTillAwake = 3.5f;
     void Start()
     {
-        
+        InvokeRepeating("TurnLaserOn", 0f, timeTillAwake + waitTime);
+        InvokeRepeating("TurnLaserOff", timeTillAwake, timeTillAwake + waitTime);
     }
 
     // Update is called once per frame
@@ -20,9 +22,19 @@ public class Laser : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            var playeDeath = collision.gameObject.GetComponent<Damage>();
+            var playeDeath = collision.gameObject.GetComponent<PlayerDeath>();
             if (playeDeath != null)
                 playeDeath.Die();
         }
+    }
+
+    void TurnLaserOn()
+    {
+        gameObject.SetActive(true);
+    }
+
+    void TurnLaserOff()
+    {
+        gameObject.SetActive(false);
     }
 }
