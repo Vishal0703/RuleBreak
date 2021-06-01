@@ -51,3 +51,5 @@ Thumbs.db
 
 fmod_editor.log
 Logs/AssetImportWorker*
+Logs/shadercompiler-AssetImportWorker*
+Logs/shadercompiler-UnityShaderCompiler*
