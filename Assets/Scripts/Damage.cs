@@ -16,7 +16,7 @@ public class Damage : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage()
+    public virtual void TakeDamage()
     {
         Debug.Log("Damage taken");
         currentHealth -= damageAmount;
