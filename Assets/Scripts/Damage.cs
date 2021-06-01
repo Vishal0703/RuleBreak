@@ -24,9 +24,10 @@ public class Damage : MonoBehaviour
             Die();
     }
 
-    private void Die()
+    public virtual void Die(bool destroyGameObject = true)
     {
         Debug.Log("Died");
-        Destroy(gameObject);
+        if(destroyGameObject)
+            Destroy(gameObject);
     }
 }
