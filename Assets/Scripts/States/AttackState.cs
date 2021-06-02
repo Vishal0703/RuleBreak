@@ -37,7 +37,8 @@ public class AttackState : IState
 
     public void OnStateEnter()
     {
-        enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        Debug.Log("Attack State Enter");
+        enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         enemy.animator.SetBool("attacking", true);
     }
 

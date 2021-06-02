@@ -74,6 +74,11 @@ public class StateMachine
         }
         transitionList.Add(new Transition(to, Predicate));
     }
+
+    public void AddAnyTransition(IState to, Func<bool> Predicate)
+    {
+        anyTransitions.Add(new Transition(to, Predicate));
+    }
     private class Transition
     {
         public Func<bool> Condition;

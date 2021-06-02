@@ -16,12 +16,7 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         if (animator == null)
         {
-            Debug.Log("No animator on this GameObject, trying in children");
-            animator = GetComponentInChildren<Animator>();
-            if (animator == null)
-                Debug.Log("No animator on Children");
-            else
-                Debug.Log("Found animator on Children");
+            Debug.LogWarning("No animator on this GameObject");
         }
         target = GameObject.FindGameObjectWithTag("Player")?.transform;
     }

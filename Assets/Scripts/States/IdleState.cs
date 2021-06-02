@@ -26,8 +26,10 @@ public class IdleState : IState
     }
     public void OnStateEnter()
     {
+        Debug.Log("Idle State Enter");
         enemy.animator.SetBool("idling", true);
         enemy.idleStartTime = Time.time;
+        enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
     public void OnStateExit()

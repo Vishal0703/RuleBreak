@@ -45,6 +45,7 @@ public class MoveState : IState
     }
     public void OnStateEnter()
     {
+        Debug.Log("Move State Enter");
         enemy.animator.SetBool("walking", true);
     }
 
