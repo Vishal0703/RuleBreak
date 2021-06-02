@@ -62,8 +62,10 @@ public class ChaseState : IState
     public void FixedTick()
     {
         Vector2 normalizedDirection = direction.normalized;
-        Vector2 force = new Vector2(normalizedDirection.x * enemy.chaseSpeed * Time.deltaTime, 0f); // only allowing horizontal movement
-        enemy.GetComponent<Rigidbody2D>().AddForce(force);
+        //Vector2 force = new Vector2(normalizedDirection.x * enemy.chaseSpeed * Time.deltaTime, 0f); // only allowing horizontal movement
+        //enemy.GetComponent<Rigidbody2D>().AddForce(force);
+        Vector2 velocity = new Vector2(normalizedDirection.x * enemy.chaseSpeed /100f, 0f); // only allowing horizontal movement
+        enemy.GetComponent<Rigidbody2D>().velocity = velocity;
     }
 
     void UpdatePath()
@@ -86,6 +88,7 @@ public class ChaseState : IState
 
     public void OnStateEnter()
     {
+        Debug.Log("Chase State Enter");
         UpdatePath();
         enemy.animator.SetBool("chasing", true);
     }

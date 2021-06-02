@@ -8,7 +8,8 @@ public class MovableEnemy : Enemy
 {
     // Start is called before the first frame update
     public Transform[] wayPoints;
-    
+    public Transform leftBound;
+    public Transform rightBound;
 
     StateMachine stateMachine;
     public float chaseRadius = 3f;
@@ -21,6 +22,8 @@ public class MovableEnemy : Enemy
     public float turnThresholdDistance = 0.2f; // To check if (waypoint - enemy)'s x distance is greater than threshold - to avoid jitter
     public float idleTimeOutTime = 2f;
     public float idleStartTime = Mathf.Infinity;
+    public float stopTimeOutTime = 1f;
+    public float stopStartTime = Mathf.Infinity;
     public bool reachedWayPoint = false;
 
     new void Awake()
@@ -33,6 +36,7 @@ public class MovableEnemy : Enemy
         var moveState = new MoveState(this);
         var chaseState = new ChaseState(this);
         var attackState = new AttackState(this);
+        var stopState = new StopState(this);
 
         Transit(idleState, moveState, IdleTimeOut());
         Transit(idleState, chaseState, InChaseRange());
@@ -41,6 +45,11 @@ public class MovableEnemy : Enemy
         Transit(chaseState, moveState, OutChaseRange());
         Transit(chaseState, attackState, InAttackRange());
         Transit(attackState, chaseState, OutAttackRange());
+        //Transit(chaseState, stopState, OutOfBounds());
+        //Transit(moveState, stopState, OutOfBounds());
+        //Transit(attackState, stopState, OutOfBounds());
+        Transit(stopState, idleState, StopTimeOut());
+        stateMachine.AddAnyTransition(stopState, OutOfBounds());
 
         stateMachine.SetState(moveState);
         
@@ -55,6 +64,8 @@ public class MovableEnemy : Enemy
         Func<bool> OutAttackRange() => () => Vector2.Distance(target.position, transform.position) > attackRadius;
         Func<bool> ReachedWayPoint() => () => reachedWayPoint;
         Func<bool> IdleTimeOut() => () => Time.time >= idleStartTime + idleTimeOutTime;
+        Func<bool> StopTimeOut() => () => Time.time >= stopStartTime + stopTimeOutTime;
+        Func<bool> OutOfBounds() => () => (transform.position.x < leftBound.position.x - 0.05f|| transform.position.x > rightBound.position.x + 0.05f) ;
     }
     new void Start()
     {
