@@ -13,9 +13,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - EnemyObstacle
-  - 
-  - 
+  - EnemyObstaclePathFind
+  - ObstacleEnemyView
+  - TargetEnemyView
   - 
   - 
   - 
@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: EnemyView
+    uniqueID: 2497359095
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
