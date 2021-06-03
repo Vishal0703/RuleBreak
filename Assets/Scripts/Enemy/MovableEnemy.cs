@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//[RequireComponent(typeof(FieldOfView))]
 public class MovableEnemy : Enemy
 {
     // Start is called before the first frame update
