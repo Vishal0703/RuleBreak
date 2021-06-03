@@ -8,6 +8,7 @@ public class FieldOfView : MonoBehaviour
     [Range(0,360)]
     public float viewAngle;
     public bool isFacingRight = true;
+    public string meshName;
 
     public LayerMask targetMask;
     public LayerMask obstacleMask;
@@ -24,7 +25,7 @@ public class FieldOfView : MonoBehaviour
     void Start()
     {
         viewMesh = new Mesh();
-        viewMesh.name = "View Mesh";
+        viewMesh.name = meshName;
         viewMeshFilter.mesh = viewMesh;
         InvokeRepeating("FindVisibleTargets", 0.2f, 0.2f);
     }

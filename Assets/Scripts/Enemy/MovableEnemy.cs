@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(FieldOfView))]
 public class MovableEnemy : Enemy
 {
     // Start is called before the first frame update
@@ -13,6 +12,7 @@ public class MovableEnemy : Enemy
     public Transform rightBound;
 
     StateMachine stateMachine;
+    public float viewAngle = 80f;
     public float chaseRadius = 3f;
     public float attackRadius = 2f;
     public float chaseSpeed = 200f;
@@ -27,10 +27,18 @@ public class MovableEnemy : Enemy
     public float stopStartTime = Mathf.Infinity;
     public bool reachedWayPoint = false;
 
+    public FieldOfView chaseFieldOfView;
+    public FieldOfView attackFieldOfView;
+
     new void Awake()
     {
         base.Awake();
-
+        var fieldOfViews = GetComponentsInChildren<FieldOfView>();
+        chaseFieldOfView = fieldOfViews[0];
+        attackFieldOfView = fieldOfViews[1];
+        chaseFieldOfView.viewAngle = attackFieldOfView.viewAngle = viewAngle;
+        chaseFieldOfView.viewRadius = chaseRadius;
+        attackFieldOfView.viewRadius = attackRadius;
         stateMachine = new StateMachine();
 
         var idleState = new IdleState(this);
@@ -46,11 +54,11 @@ public class MovableEnemy : Enemy
         Transit(chaseState, moveState, OutChaseRange());
         Transit(chaseState, attackState, InAttackRange());
         Transit(attackState, chaseState, OutAttackRange());
-        //Transit(chaseState, stopState, OutOfBounds());
-        //Transit(moveState, stopState, OutOfBounds());
-        //Transit(attackState, stopState, OutOfBounds());
+        Transit(chaseState, stopState, OutOfBounds());
+        Transit(moveState, stopState, OutOfBounds());
+        Transit(attackState, stopState, OutOfBounds());
         Transit(stopState, idleState, StopTimeOut());
-        stateMachine.AddAnyTransition(stopState, OutOfBounds());
+        //stateMachine.AddAnyTransition(stopState, OutOfBounds());
 
         stateMachine.SetState(moveState);
         
@@ -59,10 +67,10 @@ public class MovableEnemy : Enemy
             stateMachine.AddTransition(from, to, Predicate);
         }
 
-        Func<bool> InChaseRange() => () => Vector2.Distance(target.position, transform.position) <= chaseRadius;
-        Func<bool> OutChaseRange() => () => Vector2.Distance(target.position, transform.position) > chaseRadius;
-        Func<bool> InAttackRange() => () => Vector2.Distance(target.position, transform.position) <= attackRadius;
-        Func<bool> OutAttackRange() => () => Vector2.Distance(target.position, transform.position) > attackRadius;
+        Func<bool> InChaseRange() => () => chaseFieldOfView.visibleTargets.Count != 0; 
+        Func<bool> OutChaseRange() => () => chaseFieldOfView.visibleTargets.Count == 0;
+        Func<bool> InAttackRange() => () => attackFieldOfView.visibleTargets.Count != 0;
+        Func<bool> OutAttackRange() => () => attackFieldOfView.visibleTargets.Count == 0;
         Func<bool> ReachedWayPoint() => () => reachedWayPoint;
         Func<bool> IdleTimeOut() => () => Time.time >= idleStartTime + idleTimeOutTime;
         Func<bool> StopTimeOut() => () => Time.time >= stopStartTime + stopTimeOutTime;
@@ -84,6 +92,11 @@ public class MovableEnemy : Enemy
     {
         base.LateUpdate();
         stateMachine.LateTick();
+        chaseFieldOfView.viewAngle = attackFieldOfView.viewAngle = viewAngle;
+        chaseFieldOfView.viewRadius = chaseRadius;
+        attackFieldOfView.viewRadius = attackRadius;
+        chaseFieldOfView.isFacingRight = isSpriteRightFacing;
+        attackFieldOfView.isFacingRight = isSpriteRightFacing;
     }
 
     new void FixedUpdate()
