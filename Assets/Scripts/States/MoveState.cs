@@ -10,6 +10,7 @@ public class MoveState : IState
     public MoveState(MovableEnemy _enemy)
     {
         enemy = _enemy;
+        currentIndex = enemy.firstWayPointIndex;
     }
     public void Tick()
     {

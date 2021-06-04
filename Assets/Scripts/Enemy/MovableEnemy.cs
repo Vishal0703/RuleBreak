@@ -14,6 +14,7 @@ public class MovableEnemy : Enemy
     public Transform laser;
 
     StateMachine stateMachine;
+    public int firstWayPointIndex = 0;
     public float viewAngle = 80f;
     public float chaseRadius = 3f;
     public float attackRadius = 2f;
