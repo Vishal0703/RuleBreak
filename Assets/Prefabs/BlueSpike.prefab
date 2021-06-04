@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5412545013395872313}
   - component: {fileID: 2603439412124459513}
   m_Layer: 0
-  m_Name: spike
-  m_TagString: Untagged
+  m_Name: BlueSpike
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8033211162295674600, guid: 639713ffbac92e84d8c0648f55f52d51, type: 3}
+  m_Sprite: {fileID: 3527385168062599441, guid: 639713ffbac92e84d8c0648f55f52d51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,9 +99,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.26999998, y: 0, z: 0.31, w: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.34, y: 1.42}
+    oldSize: {x: 2.45, y: 1.68}
     newSize: {x: 2.34, y: 1.42}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
