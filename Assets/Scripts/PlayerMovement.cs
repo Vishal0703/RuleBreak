@@ -31,11 +31,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(playerInputController.jump)
-        //    animator?.SetBool("isJumping", true);
+        if (playerInputController.jump)
+            animator?.SetBool("isJumping", true);
 
         horizontalMove = playerInputController.controls.Player.Move.ReadValue<float>() * runSpeed;
-        //animator?.SetFloat("speed", Mathf.Abs(horizontalMove));
+        animator?.SetFloat("speed", Mathf.Abs(horizontalMove));
     }
 
     private void FixedUpdate()
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLanding()
     {
-        //animator?.SetBool("isJumping", false);
+        animator?.SetBool("isJumping", false);
     }
 
     public void OnCrouching(bool isCrouching)
