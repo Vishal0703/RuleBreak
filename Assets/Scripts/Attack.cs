@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField] Transform attackPoint;
-    [SerializeField] float attackRadius;
     PlayerInputController playerInputController;
     Animator animator;
     bool attack;
+    public GameObject hammer;
 
     // Start is called before the first frame update
     void Start()
@@ -23,30 +22,19 @@ public class Attack : MonoBehaviour
         attack = playerInputController.meleeattack;
         if (attack)
         {
+            hammer.SetActive(true);
             animator.SetTrigger("hammerAttack");
-            Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)attackPoint.position, attackRadius);
-            foreach (var collider in colliders)
-            {
-                if (collider.gameObject.CompareTag("Rule"))
-                {
-                    var damage = collider.gameObject.GetComponent<Damage>();
-                    if (damage == null)
-                        Debug.LogWarning("Rule Doesn't have Damage Component, won't be damaged");
-                    else
-                        damage.TakeDamage();
-                }
-            }
             playerInputController.meleeattack = false;
         }
+    }
+
+    public void HammerDeactivate()
+    {
+        hammer.SetActive(false);
     }
 
     private void FixedUpdate()
     {
         
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }
