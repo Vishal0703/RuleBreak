@@ -61,39 +61,26 @@ public class FieldOfView : MonoBehaviour
             {
                 if (Vector3.Angle(directionToTarget, transform.right) < viewAngle / 2)
                 {
-                    //Debug.Log($"{colliders[i].gameObject.name} in view");
                     distanceToTarget = Vector3.Distance(transform.position, target.position);
-                    //Gizmos.DrawLine(transform.position, target.position);
-                    if (TargetNotInList(target))
-                        visibleTargets.Add(new VisibleTarget(target, target.position));
-                    //if (!Physics2D.Raycast(transform.position, target.position, distanceToTarget, obstacleMask))
-                    //{
-                    //    Debug.Log($"{colliders[i].gameObject.name} in range");
-                    //    if (TargetNotInList(target))
-                    //        visibleTargets.Add(new VisibleTarget(target, target.position));
-                    //}
+                    if (!Physics2D.Raycast(transform.position, target.position-transform.position, distanceToTarget, obstacleMask))
+                    {
+                        Debug.Log($"{colliders[i].gameObject.name} in range");
+                        if (TargetNotInList(target))
+                            visibleTargets.Add(new VisibleTarget(target, target.position));
+                    }
                 }
             }
             else
             {
                 if (Vector3.Angle(directionToTarget, -transform.right) < viewAngle / 2)
                 {
-                    //Debug.Log($"{colliders[i].gameObject.name} in view");
                     distanceToTarget = Vector3.Distance(transform.position, target.position);
-                    //Gizmos.DrawLine(transform.position, target.position);
-                    if (TargetNotInList(target))
-                        visibleTargets.Add(new VisibleTarget(target, target.position));
-                    //hit = Physics2D.Raycast(transform.position, target.position, distanceToTarget, obstacleMask);
-                    //if (hit.collider == null)
-                    //{
-                    //    Debug.Log($"{colliders[i].gameObject.name} in range");
-                    //    if (TargetNotInList(target))
-                    //        visibleTargets.Add(new VisibleTarget(target, target.position));
-                    //}
-                    //else
-                    //{
-                    //    Debug.Log($"{hit.collider.gameObject.name}");
-                    //}
+                    if (!Physics2D.Raycast(transform.position, target.position-transform.position, distanceToTarget, obstacleMask))
+                    {
+                        Debug.Log($"{colliders[i].gameObject.name} in range");
+                        if (TargetNotInList(target))
+                            visibleTargets.Add(new VisibleTarget(target, target.position));
+                    }
                 }
             }
             
@@ -264,13 +251,4 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        //if(target != null)
-        //    Gizmos.DrawLine(transform.position, target.position);
-        //Gizmos.color = Color.red;
-        //if (hit.collider != null)
-        //    Gizmos.DrawLine(transform.position, hit.point);
-
-    }
 }
