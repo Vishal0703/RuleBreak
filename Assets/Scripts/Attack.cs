@@ -7,12 +7,14 @@ public class Attack : MonoBehaviour
     [SerializeField] Transform attackPoint;
     [SerializeField] float attackRadius;
     PlayerInputController playerInputController;
+    Animator animator;
     bool attack;
 
     // Start is called before the first frame update
     void Start()
     {
         playerInputController = GetComponent<PlayerInputController>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,7 @@ public class Attack : MonoBehaviour
         attack = playerInputController.meleeattack;
         if (attack)
         {
+            animator.SetTrigger("hammerAttack");
             Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)attackPoint.position, attackRadius);
             foreach (var collider in colliders)
             {
