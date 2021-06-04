@@ -26,11 +26,13 @@ public class Laser : MonoBehaviour
     private void FixedUpdate()
     {
         //Debug.Log($"{transform.position}");
-        var hits = Physics2D.RaycastAll(transform.position, target.position - transform.position);
+        var distanceToCheck = Vector3.Distance(transform.position, target.position);
+        var hits = Physics2D.RaycastAll(transform.position, target.position - transform.position, distanceToCheck);
         foreach (var hit in hits)
         {
             if (hit.collider.gameObject.CompareTag("Player") && hitPlayer)
             {
+                Debug.Log($"laser {transform.position} hitting player");
                 var playeDeath = hit.collider.gameObject.GetComponent<PlayerDeath>();
                 if (playeDeath != null)
                     playeDeath.TakeDamage();
