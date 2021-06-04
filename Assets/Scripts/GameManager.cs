@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     Controls controls;
     public bool pause;
     public bool reload;
+    public AudioClip ruleBreakClip;
 
     private void Awake()
     {
