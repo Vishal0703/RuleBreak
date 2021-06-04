@@ -9288,11 +9288,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2138690591506497069, guid: ade72486535b6aa419f8f2c37c3008ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.55
+      value: -15.95
       objectReference: {fileID: 0}
     - target: {fileID: 2138690591506497069, guid: ade72486535b6aa419f8f2c37c3008ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.49
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 2138690591506497069, guid: ade72486535b6aa419f8f2c37c3008ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9578,6 +9578,14 @@ PrefabInstance:
       propertyPath: viewRadius
       value: 4.33
       objectReference: {fileID: 0}
+    - target: {fileID: 5075665935936700388, guid: a23c47eade10b44468f88aba0e152716, type: 3}
+      propertyPath: chaseRadius
+      value: 5.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075665935936700388, guid: a23c47eade10b44468f88aba0e152716, type: 3}
+      propertyPath: attackRadius
+      value: 4.12
+      objectReference: {fileID: 0}
     - target: {fileID: 5075665936277255133, guid: a23c47eade10b44468f88aba0e152716, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.36
@@ -9725,20 +9733,32 @@ PrefabInstance:
       value: Crate Is Heavy
       objectReference: {fileID: 0}
     - target: {fileID: 8677262025952031631, guid: f790760829fc06a46a63ff68831f491b, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677262025952031631, guid: f790760829fc06a46a63ff68831f491b, type: 3}
+      propertyPath: m_margin.z
+      value: -14.106308
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677262025952031631, guid: f790760829fc06a46a63ff68831f491b, type: 3}
       propertyPath: m_fontColor.b
-      value: 0
+      value: 0.0074759745
       objectReference: {fileID: 0}
     - target: {fileID: 8677262025952031631, guid: f790760829fc06a46a63ff68831f491b, type: 3}
       propertyPath: m_fontColor.g
-      value: 0
+      value: 0.09286403
       objectReference: {fileID: 0}
     - target: {fileID: 8677262025952031631, guid: f790760829fc06a46a63ff68831f491b, type: 3}
       propertyPath: m_fontColor.r
-      value: 0
+      value: 0.2264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677262025952031631, guid: f790760829fc06a46a63ff68831f491b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 8677262025952031631, guid: f790760829fc06a46a63ff68831f491b, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 4278327354
       objectReference: {fileID: 0}
     - target: {fileID: 8677262025952031632, guid: f790760829fc06a46a63ff68831f491b, type: 3}
       propertyPath: m_LocalScale.x
