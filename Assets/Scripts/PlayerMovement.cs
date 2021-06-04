@@ -63,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnGravityFlip()
     {
+        GameManager.gm.GetComponent<AudioSource>().clip = GameManager.gm.ruleBreakClip;
+        GameManager.gm.GetComponent<AudioSource>().Play();
+
         Debug.Log("Response Invoked");
         Vector3 theScale = transform.localScale;
         theScale.y *= -1;

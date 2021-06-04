@@ -30,6 +30,9 @@ public class Damage : MonoBehaviour
 
     public virtual void Die(bool destroyGameObject = true)
     {
+        var audioSource = GetComponent<AudioSource>();
+        if (audioSource)
+            audioSource.PlayOneShot(damageClip);
         Debug.Log($"Died {destroyGameObject}");
         if(destroyGameObject)
             Destroy(gameObject);

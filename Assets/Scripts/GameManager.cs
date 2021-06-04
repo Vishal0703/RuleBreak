@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     private void Reload()
     {
-        reload = true;
+        LevelSelect(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LevelSelect(string name)

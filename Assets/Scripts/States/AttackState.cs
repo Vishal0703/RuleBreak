@@ -57,9 +57,7 @@ public class AttackState : IState
     {
         startTime = Time.time;
         enemy.laser.gameObject.SetActive(true);
-        var audioSource = enemy.gameObject.GetComponent<AudioSource>();
-        if (audioSource)
-            audioSource.Play();
+        
         Debug.Log("Attack State Enter");
         enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         enemy.animator.SetBool("attacking", true);
@@ -69,6 +67,9 @@ public class AttackState : IState
 
     public void LaserAttack()
     {
+        var audioSource = enemy.gameObject.GetComponent<AudioSource>();
+        if (audioSource)
+            audioSource.Play();
         var lineRenderer = enemy.laser.GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, enemy.laser.transform.position);
         lineRenderer.SetPosition(1, enemy.target.transform.position);
