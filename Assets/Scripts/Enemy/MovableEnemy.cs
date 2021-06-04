@@ -10,6 +10,8 @@ public class MovableEnemy : Enemy
     public Transform[] wayPoints;
     public Transform leftBound;
     public Transform rightBound;
+    public Transform gun;
+    public Transform laser;
 
     StateMachine stateMachine;
     public float viewAngle = 80f;
@@ -17,6 +19,7 @@ public class MovableEnemy : Enemy
     public float attackRadius = 2f;
     public float chaseSpeed = 200f;
     public float moveSpeed = 100f;
+    public float attackInterval = 0.5f;
 
     public float nextWayPointDistanceChaseState = 3f;
     public float nextWayPointDistanceMoveState = 1f;

@@ -6,10 +6,15 @@ public class Laser : MonoBehaviour
 {
     [SerializeField] float waitTime = 2f;
     [SerializeField] float timeTillAwake = 3.5f;
+    public Transform target;
+    public bool hitPlayer = false;
     void Start()
     {
-        InvokeRepeating("TurnLaserOn", 0f, timeTillAwake + waitTime);
-        InvokeRepeating("TurnLaserOff", timeTillAwake, timeTillAwake + waitTime);
+        if(timeTillAwake >0 && waitTime > 0)
+        {
+            InvokeRepeating("TurnLaserOn", 0f, timeTillAwake + waitTime);
+            InvokeRepeating("TurnLaserOff", timeTillAwake, timeTillAwake + waitTime);
+        }
     }
 
     // Update is called once per frame
@@ -18,15 +23,40 @@ public class Laser : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        if(collision.gameObject.CompareTag("Player"))
+        Debug.Log($"{transform.position}");
+        var hits = Physics2D.RaycastAll(transform.position, target.position - transform.position);
+        foreach (var hit in hits)
         {
-            var playeDeath = collision.gameObject.GetComponent<PlayerDeath>();
-            if (playeDeath != null)
-                playeDeath.Die();
+            if (hit.collider.gameObject.CompareTag("Player") && hitPlayer)
+            {
+                var playeDeath = hit.collider.gameObject.GetComponent<PlayerDeath>();
+                if (playeDeath != null)
+                    playeDeath.Die();
+                hitPlayer = false;
+            }
         }
     }
+    private void OnEnable()
+    {
+        hitPlayer = true;
+    }
+
+    private void OnDisable()
+    {
+        hitPlayer = false;
+    }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(collision.gameObject.CompareTag("Player"))
+    //    {
+    //        var playeDeath = collision.gameObject.GetComponent<PlayerDeath>();
+    //        if (playeDeath != null)
+    //            playeDeath.Die();
+    //    }
+    //}
 
     void TurnLaserOn()
     {
@@ -36,5 +66,10 @@ public class Laser : MonoBehaviour
     void TurnLaserOff()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, target.position);
     }
 }

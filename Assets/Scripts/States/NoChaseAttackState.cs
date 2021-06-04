@@ -5,6 +5,8 @@ using UnityEngine;
 public class NoChaseAttackState : IState
 {
     public NoChaseEnemy enemy;
+    private float startTime;
+
     public NoChaseAttackState(NoChaseEnemy _enemy)
     {
         enemy = _enemy;
@@ -13,6 +15,22 @@ public class NoChaseAttackState : IState
     {
         Vector2 direction = (enemy.target.transform.position - enemy.transform.position).normalized;
         FaceTarget(direction);
+        if (enemy.laser.gameObject.activeSelf)
+            LaserAttack();
+        if (Time.time > startTime + enemy.attackInterval)
+        {
+            RevertLaserState();
+            startTime = Time.time;
+        }
+
+    }
+
+    private void RevertLaserState()
+    {
+        if (enemy.laser.gameObject.activeSelf)
+            enemy.laser.gameObject.SetActive(false);
+        else
+            enemy.laser.gameObject.SetActive(true);
     }
 
     private void FaceTarget(Vector2 direction)
@@ -37,13 +55,26 @@ public class NoChaseAttackState : IState
 
     public void OnStateEnter()
     {
+        startTime = Time.time;
+        enemy.laser.gameObject.SetActive(true);
         Debug.Log("No Chase Attack State Enter");
         enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         enemy.animator.SetBool("attacking", true);
+        enemy.laser.GetComponent<Laser>().target = enemy.target;
+        //enemy.InvokeRepeating("LaserAttack", enemy.attackInterval, enemy.attackInterval);
+    }
+
+    public void LaserAttack()
+    {
+        var lineRenderer = enemy.laser.GetComponent<LineRenderer>();
+        lineRenderer.SetPosition(0, enemy.laser.transform.position);
+        lineRenderer.SetPosition(1, enemy.target.transform.position);
+        var targetDistance = Vector3.Distance(enemy.transform.position, enemy.target.transform.position);
     }
 
     public void OnStateExit()
     {
+        enemy.laser.gameObject.SetActive(false);
         enemy.animator.SetBool("attacking", false);
     }
 }

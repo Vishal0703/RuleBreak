@@ -51,7 +51,7 @@ public class FieldOfView : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
         for(int i = 0; i < colliders.Length; i++)
         {
-            Debug.Log($"detected {colliders[i].gameObject.name}");
+            //Debug.Log($"detected {colliders[i].gameObject.name}");
             target = colliders[i].transform;
             Vector3 directionToTarget;
             float distanceToTarget;
@@ -61,7 +61,7 @@ public class FieldOfView : MonoBehaviour
             {
                 if (Vector3.Angle(directionToTarget, transform.right) < viewAngle / 2)
                 {
-                    Debug.Log($"{colliders[i].gameObject.name} in view");
+                    //Debug.Log($"{colliders[i].gameObject.name} in view");
                     distanceToTarget = Vector3.Distance(transform.position, target.position);
                     //Gizmos.DrawLine(transform.position, target.position);
                     if (TargetNotInList(target))
@@ -78,7 +78,7 @@ public class FieldOfView : MonoBehaviour
             {
                 if (Vector3.Angle(directionToTarget, -transform.right) < viewAngle / 2)
                 {
-                    Debug.Log($"{colliders[i].gameObject.name} in view");
+                    //Debug.Log($"{colliders[i].gameObject.name} in view");
                     distanceToTarget = Vector3.Distance(transform.position, target.position);
                     //Gizmos.DrawLine(transform.position, target.position);
                     if (TargetNotInList(target))
@@ -266,11 +266,11 @@ public class FieldOfView : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if(target != null)
-            Gizmos.DrawLine(transform.position, target.position);
-        Gizmos.color = Color.red;
-        if (hit.collider != null)
-            Gizmos.DrawLine(transform.position, hit.point);
+        //if(target != null)
+        //    Gizmos.DrawLine(transform.position, target.position);
+        //Gizmos.color = Color.red;
+        //if (hit.collider != null)
+        //    Gizmos.DrawLine(transform.position, hit.point);
 
     }
 }

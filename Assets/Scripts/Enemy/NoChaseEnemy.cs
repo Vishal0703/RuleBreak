@@ -8,11 +8,15 @@ public class NoChaseEnemy : Enemy
 {
     // Start is called before the first frame update
     public Transform[] wayPoints;
+    public Transform gun;
+    public Transform laser;
 
     StateMachine stateMachine;
     public float viewAngle = 80f;
     public float attackRadius = 2f;
     public float moveSpeed = 100f;
+    public float attackInterval = 0.5f;
+
 
     public float nextWayPointDistanceChaseState = 3f;
     public float nextWayPointDistanceMoveState = 1f;
