@@ -6,7 +6,7 @@ public class Crate : MonoBehaviour
 {
     public void CrateLight()
     {
-        GetComponent<Rigidbody2D>().mass = 5f;
+        GetComponent<Rigidbody2D>().mass = 20f;
         GameManager.gm.GetComponent<AudioSource>().clip = GameManager.gm.ruleBreakClip;
         GameManager.gm.GetComponent<AudioSource>().Play();
     }

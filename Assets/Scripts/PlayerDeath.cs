@@ -10,6 +10,8 @@ public class PlayerDeath : Damage
     {
         Debug.Log($"Called fom here {destroyGameObject}");
         GameManager.gm.LevelSelect(SceneManager.GetActiveScene().buildIndex, 2f);
+        GetComponent<PlayerInputController>().enabled = false;
+        GetComponent<Animator>().SetTrigger("death");
         base.Die(destroyGameObject);
         Debug.Log("Player Died");
     }
