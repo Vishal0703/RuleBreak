@@ -9,6 +9,7 @@ public class NoChaseEnemy : Enemy
     // Start is called before the first frame update
     public Transform[] wayPoints;
     public Transform gun;
+
     public Transform laser;
 
     StateMachine stateMachine;

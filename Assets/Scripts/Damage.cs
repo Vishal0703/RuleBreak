@@ -10,6 +10,7 @@ public class Damage : MonoBehaviour
     [SerializeField]
     float damageAmount;
     float currentHealth;
+    public AudioClip damageClip;
 
     void Start()
     {
@@ -19,6 +20,9 @@ public class Damage : MonoBehaviour
     public virtual void TakeDamage()
     {
         Debug.Log("Damage taken");
+        var audioSource = GetComponent<AudioSource>();
+        if (audioSource)
+            audioSource.PlayOneShot(damageClip);
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
             Die();

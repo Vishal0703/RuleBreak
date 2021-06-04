@@ -57,6 +57,9 @@ public class NoChaseAttackState : IState
     {
         startTime = Time.time;
         enemy.laser.gameObject.SetActive(true);
+        var audioSource = enemy.gameObject.GetComponent<AudioSource>();
+        if (audioSource)
+            audioSource.Play();
         Debug.Log("No Chase Attack State Enter");
         enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         enemy.animator.SetBool("attacking", true);

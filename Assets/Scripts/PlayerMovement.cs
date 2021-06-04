@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     [SerializeField]
     bool isJumpUpwards = true;
+    AudioSource audioSource;
+    public AudioClip jumpClip;
 
     private void Start()
     {
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController2D>();
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         if(animator == null)
         {
             Debug.Log("No animator found");
@@ -32,7 +35,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (playerInputController.jump)
+        {
             animator?.SetBool("isJumping", true);
+            if (audioSource)
+                audioSource.PlayOneShot(jumpClip);
+        }
 
         horizontalMove = playerInputController.controls.Player.Move.ReadValue<float>() * runSpeed;
         animator?.SetFloat("speed", Mathf.Abs(horizontalMove));
