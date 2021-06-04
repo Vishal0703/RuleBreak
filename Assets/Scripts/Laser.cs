@@ -25,7 +25,7 @@ public class Laser : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log($"{transform.position}");
+        //Debug.Log($"{transform.position}");
         var hits = Physics2D.RaycastAll(transform.position, target.position - transform.position);
         foreach (var hit in hits)
         {
@@ -33,7 +33,7 @@ public class Laser : MonoBehaviour
             {
                 var playeDeath = hit.collider.gameObject.GetComponent<PlayerDeath>();
                 if (playeDeath != null)
-                    playeDeath.Die();
+                    playeDeath.TakeDamage();
                 hitPlayer = false;
             }
         }

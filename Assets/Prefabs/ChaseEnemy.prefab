@@ -482,7 +482,7 @@ MonoBehaviour:
   - {fileID: 5075665935672182288}
   leftBound: {fileID: 5075665935798716840}
   rightBound: {fileID: 5075665936394241233}
-  gun: {fileID: 5166443568927338262}
+  gun: {fileID: 1399054436942795271}
   laser: {fileID: 8865040432076539658}
   viewAngle: 54
   chaseRadius: 5.2

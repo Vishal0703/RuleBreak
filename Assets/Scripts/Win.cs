@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Win : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class Win : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            GameManager.gm.LevelSelect(SceneManager.GetActiveScene().buildIndex+1, 1f);
+            Time.timeScale = 0f;
             Debug.Log("Player won");
         }
     }

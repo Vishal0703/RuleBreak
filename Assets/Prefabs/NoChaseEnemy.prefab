@@ -532,7 +532,7 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 5075665936277255133}
   - {fileID: 5075665935672182288}
-  gun: {fileID: 317131925547859439}
+  gun: {fileID: 4340767536970269857}
   laser: {fileID: 7264777583331012643}
   viewAngle: 54
   attackRadius: 4.4

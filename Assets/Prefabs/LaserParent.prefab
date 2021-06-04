@@ -271,8 +271,16 @@ PrefabInstance:
       value: -1.96
       objectReference: {fileID: 0}
     - target: {fileID: 15838822314635288, guid: e4aebc6f8738b0948bbafd1d9deff89a, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 4740314774275261880}
+    - target: {fileID: 15838822314635288, guid: e4aebc6f8738b0948bbafd1d9deff89a, type: 3}
       propertyPath: waitTime
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 15838822314635288, guid: e4aebc6f8738b0948bbafd1d9deff89a, type: 3}
+      propertyPath: timeTillAwake
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 15838822314635289, guid: e4aebc6f8738b0948bbafd1d9deff89a, type: 3}
       propertyPath: m_Size.y
