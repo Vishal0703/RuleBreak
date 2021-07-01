@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class IdleState : IState
 {
-    public MovableEnemy enemy;
+    public NonStaticEnemy enemy;
 
-    public IdleState(MovableEnemy _enemy)
+    public IdleState(NonStaticEnemy _enemy)
     {
         enemy = _enemy;
     }

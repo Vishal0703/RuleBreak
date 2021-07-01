@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AttackState : IState
 {
-    public MovableEnemy enemy;
+    public NonStaticEnemy enemy;
     private float startTime;
 
-    public AttackState(MovableEnemy _enemy)
+    public AttackState(NonStaticEnemy _enemy)
     {
         enemy = _enemy;
     }

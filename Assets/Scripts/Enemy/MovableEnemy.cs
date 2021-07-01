@@ -1,38 +1,19 @@
 using Pathfinding;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MovableEnemy : Enemy
+public class MovableEnemy : NonStaticEnemy
 {
-    // Start is called before the first frame update
-    public Transform[] wayPoints;
     public Transform leftBound;
     public Transform rightBound;
-    public Transform gun;
-    public Transform laser;
 
-    StateMachine stateMachine;
-    public int firstWayPointIndex = 0;
-    public float viewAngle = 80f;
     public float chaseRadius = 3f;
-    public float attackRadius = 2f;
     public float chaseSpeed = 200f;
-    public float moveSpeed = 100f;
-    public float attackInterval = 0.5f;
-
-    public float nextWayPointDistanceChaseState = 3f;
-    public float nextWayPointDistanceMoveState = 1f;
-    public float turnThresholdDistance = 0.2f; // To check if (waypoint - enemy)'s x distance is greater than threshold - to avoid jitter
-    public float idleTimeOutTime = 2f;
-    public float idleStartTime = Mathf.Infinity;
-    public float stopTimeOutTime = 1f;
-    public float stopStartTime = Mathf.Infinity;
-    public bool reachedWayPoint = false;
 
     public FieldOfView chaseFieldOfView;
     public FieldOfView attackFieldOfView;
+    
+    StateMachine stateMachine;
 
     new void Awake()
     {

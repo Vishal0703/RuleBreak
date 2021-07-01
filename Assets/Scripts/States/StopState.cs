@@ -6,8 +6,6 @@ using UnityEngine;
 public class StopState : IState
 {
     public MovableEnemy enemy;
-    private int currentIndex = 0;
-    float initialDrag;
     Rigidbody2D rigidBody;
     Vector3 closestBound;
     Vector3 startPosition;

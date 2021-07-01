@@ -1,33 +1,11 @@
 using Pathfinding;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class NoChaseEnemy : Enemy
+
+public class NoChaseEnemy : NonStaticEnemy
 {
-    // Start is called before the first frame update
-    public Transform[] wayPoints;
-    public Transform gun;
-
-    public Transform laser;
-
     StateMachine stateMachine;
-    public float viewAngle = 80f;
-    public float attackRadius = 2f;
-    public float moveSpeed = 100f;
-    public float attackInterval = 0.5f;
-
-
-    public float nextWayPointDistanceChaseState = 3f;
-    public float nextWayPointDistanceMoveState = 1f;
-    public float turnThresholdDistance = 0.2f; // To check if (waypoint - enemy)'s x distance is greater than threshold - to avoid jitter
-    public float idleTimeOutTime = 2f;
-    public float idleStartTime = Mathf.Infinity;
-    public float stopTimeOutTime = 1f;
-    public float stopStartTime = Mathf.Infinity;
-    public bool reachedWayPoint = false;
-
     public FieldOfView attackFieldOfView;
 
     new void Awake()
@@ -39,9 +17,9 @@ public class NoChaseEnemy : Enemy
         attackFieldOfView.viewRadius = attackRadius;
         stateMachine = new StateMachine();
 
-        var idleState = new NoChaseIdleState(this);
-        var moveState = new NoChaseMoveState(this);
-        var attackState = new NoChaseAttackState(this);
+        var idleState = new IdleState(this);
+        var moveState = new MoveState(this);
+        var attackState = new AttackState(this);
 
         Transit(idleState, moveState, IdleTimeOut());
         Transit(idleState, attackState, InAttackRange());

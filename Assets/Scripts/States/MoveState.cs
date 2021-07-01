@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MoveState : IState
 {
-    public MovableEnemy enemy;
+    public NonStaticEnemy enemy;
     private int currentIndex = 0;
 
-    public MoveState(MovableEnemy _enemy)
+    public MoveState(NonStaticEnemy _enemy)
     {
         enemy = _enemy;
         currentIndex = enemy.firstWayPointIndex;
