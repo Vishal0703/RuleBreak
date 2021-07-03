@@ -10,7 +10,8 @@ public class LaserEnableDisable : MonoBehaviour
         GameManager.gm.GetComponent<AudioSource>().clip = GameManager.gm.ruleBreakClip;
         GameManager.gm.GetComponent<AudioSource>().Play();
 
-        laserToActivate.SetActive(true);
+        if(laserToActivate != null)
+            laserToActivate.SetActive(true);
         Destroy(gameObject);
     }
 
