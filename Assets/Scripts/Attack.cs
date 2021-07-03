@@ -8,6 +8,7 @@ public class Attack : MonoBehaviour
     Animator animator;
     bool attack;
     public GameObject hammer;
+    bool previousAttackComplete = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,17 +21,19 @@ public class Attack : MonoBehaviour
     void Update()
     {
         attack = playerInputController.meleeattack;
-        if (attack)
+        if (attack && previousAttackComplete)
         {
             hammer.SetActive(true);
             animator.SetTrigger("hammerAttack");
             playerInputController.meleeattack = false;
+            previousAttackComplete = false;
         }
     }
 
     public void HammerDeactivate()
     {
         hammer.SetActive(false);
+        previousAttackComplete = true;
     }
 
     private void FixedUpdate()
