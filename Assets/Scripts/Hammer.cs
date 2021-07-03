@@ -28,7 +28,7 @@ public class Hammer : MonoBehaviour
                 if (damage == null)
                     Debug.LogWarning("Rule Doesn't have Damage Component, won't be damaged");
                 else
-                    damage.TakeDamage();
+                    damage.TakeDamage(true);
             }
         }
     }

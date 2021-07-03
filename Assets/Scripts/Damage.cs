@@ -17,7 +17,7 @@ public class Damage : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public virtual void TakeDamage()
+    public virtual void TakeDamage(bool destroyOnDeath)
     {
         Debug.Log("Damage taken");
         var audioSource = GetComponent<AudioSource>();
@@ -25,10 +25,10 @@ public class Damage : MonoBehaviour
             audioSource.PlayOneShot(damageClip);
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
-            Die();
+            Die(destroyOnDeath);
     }
 
-    public virtual void Die(bool destroyGameObject = true)
+    public virtual void Die(bool destroyGameObject)
     {
         var audioSource = GetComponent<AudioSource>();
         if (audioSource)

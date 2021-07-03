@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDeath : Damage
 {
-    public override void Die(bool destroyGameObject = false)
+    public override void Die(bool destroyGameObject)
     {
         Debug.Log($"Called fom here {destroyGameObject}");
+        var colliders = GetComponents<Collider2D>();
+        foreach (var collider in colliders)
+            collider.enabled = false;
+        GetComponent<Rigidbody2D>().gravityScale = 0f;
         GameManager.gm.LevelSelect(SceneManager.GetActiveScene().buildIndex, 2f);
         GetComponent<PlayerInputController>().enabled = false;
         GetComponent<Animator>().SetTrigger("death");
