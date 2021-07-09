@@ -394,9 +394,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c606dde1191dd94bb793c4ca0e24954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
-  damageAmount: 10
+  healthData: {fileID: 11400000, guid: 59f09a63f96455d4391b1b05fa85ef10, type: 2}
   damageClip: {fileID: 8300000, guid: 0c6d912af9274ec43927026ae245a27b, type: 3}
+  damageEvent: {fileID: 11400000, guid: ec8c5d9f50786db4fb10bc31a0f29e33, type: 2}
 --- !u!82 &6253204054240879193
 AudioSource:
   m_ObjectHideFlags: 0

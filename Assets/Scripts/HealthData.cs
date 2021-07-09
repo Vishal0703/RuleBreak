@@ -4,5 +4,6 @@
 public class HealthData : ScriptableObject
 {
     public float maxHealth;
+    public float currentHealth;
     public float damageAmount;
 }
