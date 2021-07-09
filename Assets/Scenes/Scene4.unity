@@ -8478,6 +8478,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8677262025952031628, guid: f790760829fc06a46a63ff68831f491b, type: 3}
+      propertyPath: healthData
+      value: 
+      objectReference: {fileID: 11400000, guid: 06fe7634e654a2248bde2b95867f8905, type: 2}
+    - target: {fileID: 8677262025952031628, guid: f790760829fc06a46a63ff68831f491b, type: 3}
       propertyPath: ruleBreakEvent
       value: 
       objectReference: {fileID: 11400000, guid: f2f2ce7578b444e469d04a9d5422920d, type: 2}

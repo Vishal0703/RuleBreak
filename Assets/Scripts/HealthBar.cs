@@ -24,9 +24,8 @@ public class HealthBar : MonoBehaviour
         slider.value = slider.maxValue;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSliderFields()
     {
-        
+        slider.value = healthData.currentHealth;
     }
 }

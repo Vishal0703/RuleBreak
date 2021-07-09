@@ -7108,8 +7108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f5e005cef3a714f8b6658562a9f7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
-  damageAmount: 10
+  healthData: {fileID: 11400000, guid: 06fe7634e654a2248bde2b95867f8905, type: 2}
   damageClip: {fileID: 0}
   cameraShakeAmplitude: 5
   cameraShakeTime: 0.1
@@ -8867,6 +8866,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8677262025952031628, guid: f790760829fc06a46a63ff68831f491b, type: 3}
+      propertyPath: healthData
+      value: 
+      objectReference: {fileID: 11400000, guid: 06fe7634e654a2248bde2b95867f8905, type: 2}
     - target: {fileID: 8677262025952031628, guid: f790760829fc06a46a63ff68831f491b, type: 3}
       propertyPath: ruleBreakEvent
       value: 
