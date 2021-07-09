@@ -98,9 +98,4 @@ public class MovableEnemy : NonStaticEnemy
         Gizmos.DrawWireSphere(transform.position, chaseRadius);
     }
 
-    public override void Die()
-    {
-        GetComponent<Seeker>().enabled = false;
-        base.Die();
-    }
 }

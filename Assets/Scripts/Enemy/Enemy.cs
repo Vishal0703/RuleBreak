@@ -41,30 +41,4 @@ public class Enemy : MonoBehaviour
     {
 
     }
-
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        //Play Hurt Anim
-        animator?.SetTrigger("hurt");
-        if(currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    public virtual void Die()
-    {
-        //Die Anim
-        // Disable enemy
-        animator?.SetBool("isDead", true);
-        Debug.Log($"{transform.name} died");
-
-        //Collider2D[] colliders = GetComponents<Collider2D>();
-        //foreach (var collider in colliders)
-        //    collider.enabled = false;
-        gameObject.layer = 12; //Dead Layer -> so that player can't collide with it
-        this.enabled = false;
-
-    }
 }
