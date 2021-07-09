@@ -6,15 +6,13 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     [SerializeField]
-    float maxHealth;
-    [SerializeField]
-    float damageAmount;
+    HealthData healthData;
     float currentHealth;
     public AudioClip damageClip;
 
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = healthData.maxHealth;
     }
 
     public virtual void TakeDamage(bool destroyOnDeath)
@@ -23,7 +21,7 @@ public class Damage : MonoBehaviour
         var audioSource = GetComponent<AudioSource>();
         if (audioSource)
             audioSource.PlayOneShot(damageClip);
-        currentHealth -= damageAmount;
+        currentHealth -= healthData.damageAmount;
         if (currentHealth <= 0)
             Die(destroyOnDeath);
     }
