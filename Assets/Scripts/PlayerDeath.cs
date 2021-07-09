@@ -8,14 +8,13 @@ public class PlayerDeath : Damage
 {
     [SerializeField]
     GameEvent damageEvent;
-    [SerializeField]
-    GameEvent deathEvent;
-    public override void TakeDamage(bool destroyOnDeath)
+
+    public override void TakeDamage(bool destroyOnDeath, bool fullDamage)
     {
-        base.TakeDamage(destroyOnDeath);
+        base.TakeDamage(destroyOnDeath, fullDamage);
         damageEvent.Raise();
     }
-    public override void Die(bool destroyGameObject)
+    protected override void Die(bool destroyGameObject)
     {
         Debug.Log($"Called fom here {destroyGameObject}");
         var colliders = GetComponents<Collider2D>();
@@ -25,8 +24,7 @@ public class PlayerDeath : Damage
         GameManager.gm.LevelSelect(SceneManager.GetActiveScene().buildIndex, 2f);
         GetComponent<PlayerInputController>().enabled = false;
         GetComponent<Animator>().SetTrigger("death");
-        deathEvent.Raise();
-        base.Die(destroyGameObject);
         Debug.Log("Player Died");
+        base.Die(destroyGameObject);
     }
 }

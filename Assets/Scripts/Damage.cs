@@ -7,27 +7,30 @@ public class Damage : MonoBehaviour
 {
     [SerializeField]
     HealthData healthData;
-    float currentHealth;
     public AudioClip damageClip;
 
     void Start()
     {
-        currentHealth = healthData.maxHealth;
+        healthData.currentHealth = healthData.maxHealth;
     }
 
-    public virtual void TakeDamage(bool destroyOnDeath)
+    public virtual void TakeDamage(bool destroyOnDeath, bool fullDamage)
     {
         Debug.Log("Damage taken");
         var audioSource = GetComponent<AudioSource>();
         if (audioSource)
             audioSource.PlayOneShot(damageClip);
-        currentHealth -= healthData.damageAmount;
-        if (currentHealth <= 0)
+        
+        var damageAmount = fullDamage ? healthData.currentHealth : healthData.damageAmount;
+        healthData.currentHealth -= damageAmount;
+        
+        if (healthData.currentHealth <= 0)
             Die(destroyOnDeath);
     }
 
-    public virtual void Die(bool destroyGameObject)
+    protected virtual void Die(bool destroyGameObject)
     {
+        healthData.currentHealth = 0;
         var audioSource = GetComponent<AudioSource>();
         if (audioSource)
             audioSource.PlayOneShot(damageClip);

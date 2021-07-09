@@ -35,7 +35,7 @@ public class Laser : MonoBehaviour
                 Debug.Log($"laser {transform.position} hitting player");
                 var playeDeath = hit.collider.gameObject.GetComponent<PlayerDeath>();
                 if (playeDeath != null)
-                    playeDeath.TakeDamage(false);
+                    playeDeath.TakeDamage(false, false);
                 hitPlayer = false;
             }
         }

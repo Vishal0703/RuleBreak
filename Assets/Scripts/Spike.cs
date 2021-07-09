@@ -22,7 +22,7 @@ public class Spike : MonoBehaviour
         {
             var playeDeath = collision.gameObject.GetComponent<PlayerDeath>();
             if (playeDeath != null)
-                playeDeath.Die(false);
+                playeDeath.TakeDamage(false, true);
         }
     }
 }
