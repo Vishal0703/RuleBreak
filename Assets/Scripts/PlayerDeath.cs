@@ -21,9 +21,10 @@ public class PlayerDeath : Damage
         foreach (var collider in colliders)
             collider.enabled = false;
         GetComponent<Rigidbody2D>().gravityScale = 0f;
-        GameManager.gm.LevelSelect(SceneManager.GetActiveScene().buildIndex, 2f);
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<PlayerInputController>().enabled = false;
         GetComponent<Animator>().SetTrigger("death");
+        GameManager.gm.LevelSelect(SceneManager.GetActiveScene().buildIndex, 2f);
         Debug.Log("Player Died");
         base.Die(destroyGameObject);
     }

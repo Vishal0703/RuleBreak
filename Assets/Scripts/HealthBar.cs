@@ -11,7 +11,8 @@ public class HealthBar : MonoBehaviour
     Slider slider;
     [SerializeField]
     bool healthDecreasesInWholeNumbers;
-    // Start is called before the first frame update
+    [SerializeField]
+    Gradient healthGradient;
     void Start()
     {
         InitialSetup();
@@ -21,11 +22,17 @@ public class HealthBar : MonoBehaviour
     {
         slider.maxValue = healthData.maxHealth;
         slider.wholeNumbers = healthDecreasesInWholeNumbers;
-        slider.value = slider.maxValue;
+        SetSliderFields(slider.maxValue);
     }
 
     public void SetSliderFields()
     {
-        slider.value = healthData.currentHealth;
+        SetSliderFields(healthData.currentHealth);
+    }
+
+    public void SetSliderFields(float value)
+    {
+        slider.value = value;
+        slider.fillRect.GetComponent<Image>().color = healthGradient.Evaluate(slider.value / slider.maxValue);
     }
 }
