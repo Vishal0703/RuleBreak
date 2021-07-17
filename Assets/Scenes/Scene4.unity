@@ -7034,6 +7034,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4346014090451118788, guid: 58c04f6efb2ed404ba23c947b1bc2fdd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6133292586807451776, guid: 58c04f6efb2ed404ba23c947b1bc2fdd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8480,7 +8484,7 @@ PrefabInstance:
     - target: {fileID: 8677262025952031628, guid: f790760829fc06a46a63ff68831f491b, type: 3}
       propertyPath: healthData
       value: 
-      objectReference: {fileID: 11400000, guid: 06fe7634e654a2248bde2b95867f8905, type: 2}
+      objectReference: {fileID: 11400000, guid: 0a18d8b0d37f12146bc4cdeac7311939, type: 2}
     - target: {fileID: 8677262025952031628, guid: f790760829fc06a46a63ff68831f491b, type: 3}
       propertyPath: ruleBreakEvent
       value: 
